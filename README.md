@@ -35,16 +35,17 @@ The repository is organized into folders corresponding to each assignment or pro
 
 ```plaintext
 csc460-operating-systems/
-|-- assignment-1/
-|   |-- README.md
-|   |-- Assignment Files
-|-- assignment-2/
-|   |-- README.md
-|   |-- Assignment Files
-|-- project/
-|   |-- README.md
-|   |-- Assignment Files
-|-- ...
+|-- assignments/
+|   |-- assignment-1/
+|   |   |-- README.md
+|   |   |-- Assignment Files
+|   |-- assignment-2/
+|   |   |-- README.md
+|   |   |-- Assignment Files
+|-- projects/
+|   |-- project-1/
+|   |   |-- README.md
+|   |   |-- Assignment Files
 |-- LICENSE
 |-- .gitignore
 ```
