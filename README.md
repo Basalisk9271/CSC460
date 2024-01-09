@@ -10,7 +10,6 @@ Welcome to the CSC 460: Operating Systems repository! This repository serves as 
 2. [Directory Structure](#directory-structure)
 3. [How to Submit Assignments](#how-to-submit-assignments)
 4. [Code Guidelines](#code-guidelines)
-5. [Collaboration](#collaboration)
 6. [Contact Information](#contact-information)
 
 ## Getting Started
