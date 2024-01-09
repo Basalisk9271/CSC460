@@ -1,0 +1,29 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+### Above combination will ignore all files without extension ###
+
+# Ignore .DS_Store files created by macOS
+.DS_Store
+
+# Ignore common executables
+*.exe
+*.o
+*.out
+*.app
+*.jar
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.log.*

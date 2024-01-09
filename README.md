@@ -1,93 +1,97 @@
-# CSC 460
+# CSC 460: Operating Systems
 
+## Overview
 
+Welcome to the CSC 460: Operating Systems repository! This repository serves as the primary source for all your homework assignments and projects in the Operating Systems class with Dr. Bob Allen. Here, you'll find a structured and organized space to manage and submit your work throughout the semester.
 
-## Getting started
+## Table of Contents
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+1. [Getting Started](#getting-started)
+2. [Directory Structure](#directory-structure)
+3. [How to Submit Assignments](#how-to-submit-assignments)
+4. [Code Guidelines](#code-guidelines)
+5. [Collaboration](#collaboration)
+6. [Contact Information](#contact-information)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Getting Started
 
-## Add your files
+To get started with this repository, make sure you have Git installed on your machine. You can clone the repository using the following command:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+```bash
+git clone https://github.com/your-username/csc460-operating-systems.git
 ```
-cd existing_repo
-git remote add origin http://anvil.cs.mercer.edu/imlay_ga/csc-460.git
-git branch -M main
-git push -uf origin main
+
+Once cloned, navigate to the project directory:
+
+```bash
+cd csc460-operating-systems
 ```
 
-## Integrate with your tools
+Now you're ready to start working on your assignments and projects.
 
-- [ ] [Set up project integrations](http://anvil.cs.mercer.edu/imlay_ga/csc-460/-/settings/integrations)
+## Directory Structure
 
-## Collaborate with your team
+The repository is organized into folders corresponding to each assignment or project. Inside each folder, you'll find specific instructions, starter code, and any additional resources necessary for completion. Please adhere to the provided structure when submitting your work.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+```plaintext
+csc460-operating-systems/
+|-- assignment-1/
+|   |-- README.md
+|   |-- Assignment Files
+|-- assignment-2/
+|   |-- README.md
+|   |-- Assignment Files
+|-- project/
+|   |-- README.md
+|   |-- Assignment Files
+|-- ...
+|-- LICENSE
+|-- .gitignore
+```
 
-## Test and Deploy
+## How to Submit Assignments
 
-Use the built-in continuous integration in GitLab.
+Follow these steps to submit your assignments:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+1. **Create a Branch:** Before starting any assignment, create a new branch using the following command:
 
-***
+   ```bash
+   git checkout -b assignment-<number>-<your-name>
+   ```
 
-# Editing this README
+2. **Work on Your Assignment:** Complete the assignment in the designated folder. Ensure that your code follows the provided guidelines.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+3. **Commit Your Changes:** Once you've completed the assignment, commit your changes:
 
-## Suggestions for a good README
+   ```bash
+   git add .
+   git commit -m "Completed Assignment <number>"
+   ```
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+4. **Push Your Changes:** Push your branch to the remote repository:
 
-## Name
-Choose a self-explaining name for your project.
+   ```bash
+   git push origin assignment-<number>-<your-name>
+   ```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+5. **Create a Pull Request:** Create a pull request on GitHub, comparing your branch to the main branch. Include a concise description of your changes.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Code Guidelines
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Follow the coding guidelines provided in each assignment's README.md file. Adhering to these guidelines ensures consistency and makes it easier for Dr. Bob Allen to evaluate your work.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Collaboration
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+While collaboration is encouraged, each student must submit their work independently. Plagiarism or any form of academic dishonesty will not be tolerated. If you have questions or need clarification, feel free to reach out to Dr. Bob Allen or your classmates.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Contact Information
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+If you have any questions or concerns, please contact:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- Dr. Bob Allen
+  - Email: bob.allen@example.com
+- Teaching Assistant (if applicable)
+  - Email: ta@example.com
+- Classmates (for collaboration and general assistance)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Happy coding!
