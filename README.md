@@ -18,13 +18,13 @@ Welcome to the CSC 460: Operating Systems repository! This repository serves as 
 To get started with this repository, make sure you have Git installed on your machine. You can clone the repository using the following command:
 
 ```bash
-git clone https://github.com/your-username/csc460-operating-systems.git
+git clone http://anvil.cs.mercer.edu/imlay_ga/csc-460.git
 ```
 
 Once cloned, navigate to the project directory:
 
 ```bash
-cd csc460-operating-systems
+cd csc-460
 ```
 
 Now you're ready to start working on your assignments and projects.
@@ -80,18 +80,13 @@ Follow these steps to submit your assignments:
 
 Follow the coding guidelines provided in each assignment's README.md file. Adhering to these guidelines ensures consistency and makes it easier for Dr. Bob Allen to evaluate your work.
 
-## Collaboration
-
-While collaboration is encouraged, each student must submit their work independently. Plagiarism or any form of academic dishonesty will not be tolerated. If you have questions or need clarification, feel free to reach out to Dr. Bob Allen or your classmates.
-
 ## Contact Information
 
 If you have any questions or concerns, please contact:
 
 - Dr. Bob Allen
-  - Email: bob.allen@example.com
-- Teaching Assistant (if applicable)
-  - Email: ta@example.com
-- Classmates (for collaboration and general assistance)
+  - Email: allen_r@mercer.edu
+  - Office Phone: (478) 301-2817
+  - Office: 232 Willet Science Center
 
 Happy coding!
