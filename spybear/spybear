@@ -22,7 +22,7 @@ function get_user_info() {
     if [ -n "$username" ]; then
         # Extract full name and phone number from passwd entry
         local full_name=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f1 | tr -s ' ')
-        local phone_number=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f4 | tr -d ' ')
+        local phone_number=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f3 | tr -d ' ')
         
         # Get terminal and currently executing command using the 'w' command
         local tty=$(w -h "$username" | awk '{print $2}' | tr '\n' ' ')
