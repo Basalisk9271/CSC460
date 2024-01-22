@@ -45,7 +45,7 @@ function get_user_info() {
 # Main script
 if [ $# -eq 0 ]; then
   # No arguments, display information about currently logged on users
-  online_users=$(who | awk '{print $1}' | sort)
+  online_users=$(who | awk '{print $1}' | sort -u)
 
   # Call function to display headers
   display_headers
