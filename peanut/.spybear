@@ -1,0 +1,79 @@
+#!/bin/bash
+# =======================================================================
+# Name: Gabe Imlay
+# Class: Operating Systems
+# Due Date: Jan 22, 2024
+# Sources: Chat-GPT for basic syntax and classmates for advice
+# =======================================================================
+
+# Function to display headers
+display_headers() {
+  # Print formatted headers for user information
+  printf "%-15s %-22s %-15s %-15s %-15s\n" "USERID" "NAME" "PHONE" "TTY" "WHAT"
+  printf "=============================================================================\n"
+}
+
+# Function to get user information
+function get_user_info() {
+    local partial_username=$1
+    # Get full username matching the partial username
+    local username=$(getent passwd | awk -F: -v partial="$partial_username" '$1 ~ partial {print $1}')
+
+    if [ -n "$username" ]; then
+        # Extract full name and phone number from passwd entry
+        local full_name=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f1 | tr -s ' ')
+        local phone_number=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f3 | tr -d ' ')
+        
+        # Get terminal and currently executing command using the 'w' command
+        local tty=$(w -h "$username" | awk '{print $2}' | tr '\n' ' ')
+        local what=$(w -h "$username" | awk '{for (i=8; i<=NF; i++) print $i}' | tr '\n' ' ')
+        
+        # Check if tty and what are empty, assign default values if true
+        if [ -z "$tty" ] && [ -z "$what" ]; then
+            tty="NOT ON"
+            what="-"
+        fi
+
+        # Print formatted user information
+        printf "%-15s %-22s %-15s %-15s %-15s\n" "$username" "$full_name" "$phone_number" "$tty" "$what"
+    else
+        # Print error message if user not found
+        echo "User not found"
+    fi
+}
+
+# Main script
+if [ $# -eq 0 ]; then
+  # No arguments, display information about currently logged on users
+  online_users=$(who | awk '{print $1}' | sort -u)
+
+  # Call function to display headers
+  display_headers
+
+  # Iterate through online users and call function to get user info
+  for username in $online_users; do
+    get_user_info $username
+  done
+
+elif [ "$1" = "all" ]; then
+  # Display information about all users in the class
+  display_headers
+
+  # Find user IDs in /etc/passwd for a specific class identifier
+  grep "BIGBADBEARS24" /etc/passwd | cut -d: -f1 | sort | while read -r userid; do
+    # Call function to get user info for each user ID
+    get_user_info "$userid"
+  done
+else
+  # Display information for specified user IDs
+  display_headers
+
+  # Iterate through specified partial usernames and call function to get user info
+  for partial_username in "$@"; do
+    usernames=$(getent passwd | awk -F: -v partial="$partial_username" '$1 ~ partial {print $1}')
+  
+    for username in $usernames; do
+      get_user_info "$username"
+    done
+  done
+fi

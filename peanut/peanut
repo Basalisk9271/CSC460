@@ -1,0 +1,143 @@
+#!/bin/bash
+
+# =======================================================================
+# Name: Gabe Imlay
+# Class: Operating Systems
+# Assignment: Peanut Shell
+# Due Date: Jan 29, 2024
+# Sources: Chat-GPT for basic syntax and classmates for advice
+# =======================================================================
+
+function showcase() {
+    less "$1"
+}
+
+function nutcall() {
+    # Dummy data, replace with actual lookup implementation
+    full_name=$(getent passwd "$1" | cut -d: -f5 | cut -d, -f1 | tr -s ' ')
+    phone_number=$(getent passwd "$1" | cut -d: -f5 | cut -d, -f3 | tr -d ' ')
+    echo "$full_name: Office Phone - $phone_number"
+}
+
+function nutlist() {
+    online_users=$(who | awk '{print $1}' | sort -u)
+
+  # Iterate through online users and get user full names
+  for username in $online_users; do
+    full_name=$(getent passwd "$username" | cut -d: -f5 | cut -d, -f1 | tr -s ' ')
+    echo "$full_name"
+  done
+}
+
+function nutstuff() {
+    ls -a
+}
+
+function helpnuts() {
+    echo "Commands available under the peanut shell:"
+    echo "  showcase filename     Display named file on the screen one page at a time."
+    echo "  nutcall userid        Lookup phone number of userid and print user’s info."
+    echo "  nutlist               Display full names of those currently logged in."
+    echo "  nutstuff              Display contents of the current directory."
+    echo "  helpnuts              Display commands and syntax available under the peanut shell."
+    echo "  nutty                 Do something interesting. Show me what kind of a nut you are!!"
+    echo "  peanutbutter filename Your favorite editor should start editing filename."
+    echo "  spybear ??arg??       Call your spybear script. Allow for all three formats."
+    echo "  nutsout               Exit the peanut shell."
+}
+
+function nutty() {
+    echo "
+                    ____
+                 _.' :  '._
+             .-.''.  ;   .''.-.
+    __      / : ___\ ;  /___ ; \      __
+  ,'_ ''--.:__;'.-.';: :'.-.':__;.--'' _'    ===================
+  :' '.t''--.. '<@.';_  ',@>' ..--''j.' ';   | A nut, you are! |
+       ':-.._J '-.-'L__ '-- ' L_..-;'       /===================
+         '-.__ ;  .-'  '-.  : __.-'
+             L ' /.------.\ ' J
+              '-.   '--'   .-'
+             __.l'-:_JL_;-';.__
+          .-j/'.;  ;''''  / .'\'-.
+        .' /:'. '-.:     .-' .';  '.
+     .-'  / ;  '-. '-..-' .-'  :    '-.
+  .+'-.  : :      '-.__.-'      ;-._   \ 
+  ; \  '.; ;                    : : '+. ;
+  :  ;   ; ;                    : ;  : \:
+ : '.'-; ;  ;                  :  ;   ,/;
+  ;    -: ;  :                ;  : .-''  :
+  :\     \  : ;             : \.-'      :
+   ;'.    \  ; :            ;.'_..--  / ;
+   :  '-.  '-:  ;          :/.      .'  :
+     \       .-'.\        /t-  :-+.   :
+      '.  .-'    'l    __/ /'. :  ; ; \  ;
+        \   .-' .-'-.-'  .' .'j \  /   ;/
+         \ / .-'   /.     .'.' ;_:'    ;
+          :-''-.'./-.'     /    '.___.'
+                \ 't  ._  /  bug :F_P:
+    "
+}
+
+function peanutbutter() {
+    # Opens a nano editor for the file you want to work on. 
+    nano "$1"
+}
+
+function spybear() {
+   ./.spybear $args
+}
+
+while true; do
+    echo -n "Peanuts> "
+    read -r command args
+
+    case "$command" in
+        "showcase")
+            showcase "$args"
+            ;;
+        "nutcall")
+            nutcall "$args"
+            ;;
+        "nutlist")
+            nutlist
+            ;;
+        "nutstuff")
+            nutstuff
+            ;;
+        "helpnuts")
+            helpnuts
+            ;;
+        "bignut")
+            bash
+            ;;
+        "nutty")
+            nutty
+            ;;
+        "peanutbutter")
+            peanutbutter "$args"
+            ;;
+        "spybear")
+            spybear "$args"
+            ;;
+        "nutsout")
+            echo "Keep the change, you filthy animal..."
+            exit 0
+            ;;
+        *)
+            echo "
+                Command not found.
+                ............../'¯/) 
+                ............,/¯../ 
+                .........../..../ 
+                ...../'¯/'...'/'¯¯·¸ 
+                ../'/.../..../......./¨¯\ 
+                ('(...'...'.... ¯~/'...') 
+                .\.................'...../ 
+                ..''...\.......... _.·' 
+                ....\..............( 
+                ......\.............\...
+                Try 'helpnuts' for available commands."
+            ;;
+    esac
+done
