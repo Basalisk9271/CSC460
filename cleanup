@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Script to clean up all processes - gotten from Josh and edited
+
+#  Cleanup a.out processes
+list=`ps -ef | grep imlay_ga | grep a.out | tr -s " " | cut -d " " -f2`
+
+for p in $procs
+do
+    kill -9 $p 2> /dev/null
+done
+
+
+#  Cleanup user processes
+list=`ps -ef | grep imlay_ga | grep user | tr -s " " | cut -d " " -f2`
+
+for p in $procs
+do
+    kill -9 $p 2> /dev/null
+done
+
+
+#  Cleanup shared memory
+list=`ipcs -m | tr -s " " | grep imlay_ga | cut -d " " -f2`
+for id in $list
+do
+    ipcrm -m $id
+done
+
+#  Cleanup semaphores
+list=`ipcs -s | tr -s " " | grep imlay_ga | cut -d " " -f2`
+for id in $list
+do
+    ipcrm -s $id
+done
