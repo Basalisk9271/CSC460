@@ -3,7 +3,7 @@
 # Script to clean up all processes - gotten from Josh and edited
 
 #  Cleanup a.out processes
-list=`ps -ef | grep imlay_ga | grep a.out | tr -s " " | cut -d " " -f2`
+list=`ps -ef | grep imlay_ga | tr -s " " | grep a.out | cut -d " " -f2`
 
 for p in $procs
 do
@@ -24,12 +24,22 @@ done
 list=`ipcs -m | tr -s " " | grep imlay_ga | cut -d " " -f2`
 for id in $list
 do
-    ipcrm -m $id
+    ipcrm -m $id 2> /dev/null
+    if [ $? -eq 0 ]; then
+        echo "Shared memory segment $id removed successfully."
+    else
+        echo "Error removing shared memory segment $id."
+    fi
 done
 
 #  Cleanup semaphores
 list=`ipcs -s | tr -s " " | grep imlay_ga | cut -d " " -f2`
 for id in $list
 do
-    ipcrm -s $id
+    ipcrm -s $id 2> /dev/null
+    if [ $? -eq 0 ]; then
+        echo "Semaphore $id removed successfully."
+    else
+        echo "Error removing semaphore $id."
+    fi
 done
