@@ -153,18 +153,17 @@ void printState(int time)
 
 int main()
 {
-    int i, shm_id;
+    int i, shm_id, shm_id_dead;
 
-    // Create shared memory segment for philosophers_died
-    shm_id = shmget(IPC_PRIVATE, sizeof(int), IPC_CREAT | 0777);
-    if (shm_id == -1)
+    shm_id_dead = shmget(IPC_PRIVATE, sizeof(int), IPC_CREAT | 0777);
+    if (shm_id_dead == -1)
     {
         perror("shmget");
         exit(EXIT_FAILURE);
     }
 
     // Attach shared memory for philosophers_died
-    philosophers_died = (int *)shmat(shm_id, NULL, 0);
+    philosophers_died = (int *)shmat(shm_id_dead, NULL, 0);
     if (philosophers_died == (int *)-1)
     {
         perror("shmat");
@@ -229,7 +228,7 @@ int main()
         time++;
     }
 
-    if (shmdt(philosophers) == -1)
+    if (shmdt(philosophers) == -1 || shmdt(philosophers_died) == -1)
     {
         perror("shmdt");
         exit(EXIT_FAILURE);
@@ -241,7 +240,7 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    if (shmctl(shm_id, IPC_RMID, NULL) == -1)
+    if (shmctl(shm_id, IPC_RMID, NULL) == -1 || shmctl(shm_id_dead, IPC_RMID, NULL) == -1)
     {
         perror("shmctl IPC_RMID");
         exit(EXIT_FAILURE);
