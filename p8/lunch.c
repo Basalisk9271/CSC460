@@ -1,3 +1,11 @@
+// =======================================================================
+// Name: Gabe Imlay
+// Class: Operating Systems
+// Assignment: Cristina’s Lively Lunch
+// Due Date: Apr 1, 2024
+// Sources: Chat-GPT for basic syntax and classmates for advice
+// =======================================================================
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
