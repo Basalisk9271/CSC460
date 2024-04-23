@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# File to run a test of processes against the memory management programs 
+clear
+
+# Compile the program files
+gcc consumer.c -o consume
+gcc producer.c -o produce
+gcc shutdown.c -o shutdown
+
+# Time to allow the consumer to be ready
+sleep 0.5
+./consume  7  10 26&
+sleep 0.5
+
+# Add all processes
+./produce 5 5&
+./produce 2 4&
+./produce 10 8&
+./produce 14 7&
+./produce 20 2&
+./produce 2 1&
+./produce 1 4&
+./produce 2 3&
+./produce 6 2&
+./produce 8 5&
+./produce 40 8&
+./produce 2 9&
+./produce 1 1&
+./produce 6 4&
+./produce 9 5&
+./produce 15 10&
+./produce 7 8&
+./produce 3 12&
+./produce 18 22&
+./produce 11 15&
+./produce 35 27&
+./produce 23 16&
+./produce 5 18&
+./produce 16 14&
+
+sleep 50 # time you want to run the simulation before ending
+./shutdown
+
+# Note that when time turns to zero we do not display that process/request on the list, but a message saying that it was completed is displayed before
+# the next list.
